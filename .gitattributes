@@ -1,0 +1,30 @@
+# Auto-detect text files and normalize line endings to LF
+* text=auto eol=lf
+
+# Explicit source types
+*.ts      text eol=lf
+*.js      text eol=lf
+*.json    text eol=lf
+*.feature text eol=lf
+*.md      text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+
+# Windows scripts keep CRLF
+*.bat     text eol=crlf
+*.cmd     text eol=crlf
+
+# Binary files — no diff/merge, no line-ending conversion
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.zip     binary
+*.pdf     binary
+
+# Do not diff generated/report artifacts even if accidentally tracked
+/reports/** -diff
+/test-results/** -diff
+
+# Treat feature files as a distinct language for GitHub linguist stats
+*.feature linguist-language=Gherkin
