@@ -1,0 +1,15 @@
+
+# CODEOWNERS
+# These owners will be automatically requested for review when a PR
+# touches matching files. Update the username(s) below to your actual
+# GitHub handle(s) / team once collaborators are added.
+#
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+ 
+# Default owner for everything, unless overridden below
+* @your-github-username
+ 
+# Framework core requires closer review
+/src/support/ @your-github-username
+/config/ @your-github-username
+/.github/ @your-github-username

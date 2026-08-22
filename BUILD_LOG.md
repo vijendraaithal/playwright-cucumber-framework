@@ -23,6 +23,53 @@ Each entry follows this format:
 
 ---
 
+## [Phase 0.5] GitFlow Branch Model & Contribution Rules — 2026-08-21
+**Branch:** `develop` (setup work, pre-first-feature-branch)
+**Commit(s):** see PR / direct push per Phase 0.5 instructions
+
+### What was done
+- Created `develop` branch off `main` (identical content at this point).
+- Documented full GitFlow branch model in `CONTRIBUTING.md`: `main`,
+  `develop`, `feature/*`, `framework/*`, `bugfix/*`, `hotfix/*`, `release/*`,
+  `chore/*`, `docs/*` — including branch source, merge target, and purpose
+  for each.
+- Defined branch naming convention:
+  `<type>/<ticket-id>-<short-kebab-case-description>`.
+- Documented merge-direction rules, most notably: `hotfix/*` branches off
+  `main` but merges into **both** `main` and `develop` to avoid regression
+  reintroduction; `release/*` branches off `develop`, merges into both.
+- Adopted **Conventional Commits** as the commit message standard, with
+  examples per type (`feat`, `fix`, `chore`, `docs`, `refactor`, `test`,
+  `ci`, `perf`, `style`, and framework-specific `framework(...)` scope usage).
+- Added `.github/PULL_REQUEST_TEMPLATE.md` — requires ticket link, change
+  type checkbox, and a review checklist (no hardcoded creds, reusable steps,
+  BasePage inheritance, correct tags, no `.only`/`.skip`, BUILD_LOG/README
+  updated when relevant).
+- Added `.github/CODEOWNERS` (placeholder owner — to be updated with real
+  GitHub handles once collaborators are added).
+- Added `.github/ISSUE_TEMPLATE/bug_report.md`.
+
+### Why
+- Branch protection rules (applied next) require `develop` to exist first,
+  and require documented rules so reviewers enforce them consistently rather
+  than each person inventing their own convention mid-project.
+- Conventional Commits enables potential future automation (changelog
+  generation, semantic-release) without retrofitting commit history later.
+- PR template checklist directly encodes the framework's non-negotiables
+  (no hardcoded secrets, POM inheritance, tagging discipline) so they're
+  enforced at review time, not discovered later in a retro.
+
+### Notes / Decisions
+- `framework/*` is a non-standard GitFlow addition, specific to test
+  automation repos — used for changes to hooks/fixtures/World/config/utils
+  that aren't scoped to a single feature's test coverage (e.g., "add trace
+  capture on failure" isn't a "feature" in the product sense, but is a
+  meaningful framework change worth isolating on its own branch).
+- CODEOWNERS currently points to a placeholder username — must be updated
+  before enabling "Require review from Code Owners" in branch protection.
+
+---
+
 ## [Phase 0] Repository & Governance Foundation — 2026-08-21
 **Branch:** `main` (initial commit, pre-GitFlow)
 **Commit(s):** initial commit
